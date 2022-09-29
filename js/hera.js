@@ -136,8 +136,8 @@ drop_btn.addEventListener("click", function(event){
 })
 
 //more_footer menu_slide
-const copyright = document.querySelector(".quick_copyright");
-const moreMenu = document.querySelector(".more_footer");
+const copyright = document.querySelector('.quick_copyright');
+const moreMenu = document.querySelector('.more_footer');
 
 function openCloseMenu(){
   if(moreMenu.style.display == 'block'){
@@ -149,3 +149,44 @@ function openCloseMenu(){
 
 copyright.addEventListener('click', openCloseMenu);
 
+//rside_menu 
+const sideBtn = document.querySelector(".hammenu");
+const rsideMenu = document.querySelector(".rsidemenu");
+const closeBtn = document.querySelector('.rside_close');
+
+function rsideMenuOpen(){
+  if(rsideMenu.style.display == 'block'){
+    rsideMenu.style.display = 'none';
+  } else{
+    rsideMenu.style.display = 'block';
+  }
+}
+function closeSide(){
+  if(rsideMenu.style.display == 'block'){
+    rsideMenu.style.display = 'none';
+  } else{
+    rsideMenu.style.display = 'block';
+  }
+}
+
+sideBtn.addEventListener('click', rsideMenuOpen);
+closeBtn.addEventListener('click', closeSide);
+
+
+
+
+const sideMenu = document.querySelectorAll('.rside_gnb>a');
+let i;
+
+for(i = 0; i < sideMenu.length; i++){
+  sideMenu[i].addEventListener('click',function(){
+    this.classList.toggle('active');
+
+    const sideDepth1 = this.nextElementSibling;
+    if(sideDepth1.style.maxHeight){
+      sideDepth1.style.maxHeight = null;
+    } else{
+      sideDepth1.style.maxHeight = sideDepth1.scrollHeight + "550px";
+    }
+  });
+}
